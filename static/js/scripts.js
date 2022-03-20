@@ -1,0 +1,1 @@
+/* i faces a problem with static files i dont Know if that issue is from django or from my code but the templates cant read static files contente bside img i searched about it but i didnt found any usef info , so sorry about this :(

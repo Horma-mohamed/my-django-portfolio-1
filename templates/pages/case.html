@@ -1,0 +1,40 @@
+
+
+    {% extends 'base.html' %}
+{% block title %} {{case.title}} {%endblock%}
+{% block content %}
+
+
+    <section class=" md:w-4/5 lg:w-2/3 w-full flex justify-center" >
+        <div class="w-full">
+            <div class=" w-full  relative  flex justify-center px-3 md:px-0  ">
+                <div class=" w-full   min-h-screen flex  justify-center    ">
+                    <div class="lg:w-4/5 w-4/5 ">
+                        <h1 class='text-3xl text-gray-800 underline ' >{{case.title}}</h1>
+                                <img class="my-4 w-full" src="{{ case.albom.thumb.url }}" alt="img" srcset="">
+                        <p class='text-lg text-gray-600' >
+                            {{ case.content}}
+                        </p>
+
+                        <div class="w-full flex jusify-center mt-10 ">
+                            <div >
+                                <h1 class="text-gray-800 text-lg my-1 ">USED_STACK : </h1>
+                                <div class="  bg-gray-200 rounded md flex p-4  space-x-2 " >
+                                    {% for stack in case.used_stack.all %} <h1 class="text-gray-800 underline underline-offest-1 ">{{ stack.name }}</h1> {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+    
+        </div>
+        
+        </div>
+        
+    </section>
+
+    
+    {% endblock %}
+    

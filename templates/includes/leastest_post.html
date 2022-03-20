@@ -1,0 +1,36 @@
+{% load static %}
+<section class=" w-full min-h-96 my-10  ">
+    <div class=" w-full  ">
+        <div class="w-full h-20 px-4">
+            <h1 class="text-2xl font-bold " >Leastest posts</h1>
+        </div>
+        <div class="ml-2 w-full  mb-4  " >
+            <div class=" w-full  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl:gap-x-14 md:gap-x-0 grid-flow-row ">
+                {% for post in posts %}
+                <div class="  w-full  flex justify-center my-2 ">
+                        <a class="md:w-60 w-2/3" href="{%  url 'post' post.slug %}">
+                            <div class="card md:my-3  shadow-2xl lg:shadow-none lg:hover:shadow-2xl transform duration-500 lg:hover:scale-105 lg:min-w-52  md:w-60 " >
+                        <img class="card-img-top" src={{ post.album.thumb.url }} alt="Card image cap">
+                        <div class="card-body bg-gray-100">
+                            <div class=" flex justify-between items-center">
+                                <p class=" border-gray-300 text-gray-800 my-2">{{ post.created_at | date:"d F Y" }}</p>
+                                <div class=" flex space-x-2 items-center ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="14"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 3c5.392 0 9.878 3.88 10.819 9-.94 5.12-5.427 9-10.819 9-5.392 0-9.878-3.88-10.819-9C2.121 6.88 6.608 3 12 3zm0 16a9.005 9.005 0 0 0 8.777-7 9.005 9.005 0 0 0-17.554 0A9.005 9.005 0 0 0 12 19zm0-2.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9zm0-2a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg><p> {{ post.views }} </p>
+                                </div>
+                            </div>
+                            <h5 class="card-title text-gray-800 text-xl font-bold">{{post.title}}</h5>
+                            <p class="card-text text-muted">{{ post.conten |truncatewords:15 }}</p>
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+            
+                {% endfor %}
+            
+            </div>
+            <div class="w-full h-20 flex justify-center items-center my-10" >
+                <a class="text-gray-700 text-lg " href="/blog">See more --> </a>
+            </div>
+        </div>
+    </div>
+</section>

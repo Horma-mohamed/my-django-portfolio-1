@@ -1,0 +1,80 @@
+<style>
+  .skill-per::before{
+            
+            position: absolute;
+            color:black;
+            font-size: large;
+            right: 0;
+            width: 80px;
+            height: 40px;
+
+        }
+</style>
+
+<section class=" p-4 skills">
+  <div>
+    <h1 id='skils' class="text-xl textgray-500  my-10 font-bold xl text-gray-800 " >MY_SKILLS</h1>
+  </div>
+  <div class="w-full flex justify-center " >
+    
+    <div class=" space-y-2">
+      {% for skil in skils %} 
+      
+        <div class="lg:w-full h-10  spacex-x-3 items-center my-4" >
+          <div class="text-md  ">
+            <h1>{{ skil.skil }}:</h1>
+          </div>
+          
+          <div class="relative lg:flex lg:justify-center items-center space-x-3">
+            <div class="progress  md:w-96 w-52 mx-2" style="height: 4px;">
+              <div class="progress-bar bg-gray-800 skill-per " per='{{skil.per}}' role="progressbar" style="width: 0%; transition: 6s linear;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p class="  hidden">{{ skil.per }}%</p>
+            <p id="per">{{skil.per}}%</p>
+          </div>
+          
+            
+        </div>
+        
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script type='module' >
+      $(document).ready(function(){
+    $('body').scroll(function(){
+        console.log($('body').scrollTop())
+        var scroll = $('body').scrollTop()
+        
+
+    if(scroll >= 1000 ){
+    $('.skill-per').each(function(){
+    var $this = $(this);
+    var per = $this.attr('per');
+    $this.css('width',per+'%');
+
+    //console.log(per)
+    $({animatedValue:0}).animate({animatedValue:per},{
+        duration:1000,
+        step:()=>{
+            $this.attr('per',Math.floor(this.animatedValue));
+            //$('#per').html(per+'%')
+            
+        },
+    })
+})
+
+
+    
+
+
+}
+else{
+    
+}
+
+    })
+    })
+
+</script>

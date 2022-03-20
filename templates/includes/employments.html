@@ -1,0 +1,18 @@
+
+<section class=" w-full min-h-60   ">
+    <div class=" p-2  ">
+        <div class="w-full h-20 px-2">
+            <h1 class="lg:text-xl text-lg font-bold text-gray-600 " >EMPLOYMENTS</h1>
+            
+        </div>
+        {% for employment in employment %}
+        <div class="w-full flex lg:block lg:w-auto justify-center px-4">
+            <div class=" w-full ml-2 h-auto space-y-2 relative  p-2 mb-2 border-l-2 border-gray-800  before:absolute before:w-3 before:h-3 before:rounded-full before:-left-2 before:-top-3 before:bg-gray-800  " >
+                <h1 class="text-lg font-bold text-gray-800 ">{{ employment.company}}</h1>
+                <p>{{ employment.start_date.year}} -  {% if employment.end_date  %}{{employment.end_date.year}} {% else %} Still on  {% endif %}</p>
+                <p class='text-gray-500 text-md '>{{employment.title}} </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

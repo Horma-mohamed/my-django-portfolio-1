@@ -1,0 +1,155 @@
+
+<style>
+  #btn .bar {
+    transition: all 0.5s ease-in-out ;
+  }
+  .divbtn{
+    position: relative;
+    }
+  .bar::before,.bar::after {
+    content: '';
+    position: absolute;
+    width: 24px ;
+    height: 4px;
+    background: rgb(27, 26, 26);
+    transition: all .5s ease-in-out;
+    left: 0;
+}
+  .bar::before{
+    transform: translateY(-10px);
+}
+  .bar::after{
+    transform: translateY(10px);
+}
+  .open .bar{
+    transform:  translateX(-50px);
+    background: transparent;
+    
+
+  }
+  .open .bar::after{
+    transform: rotate(-45deg) translate(35px , 35px);
+    background: white;
+  }
+  .open .bar::before{
+    transform: rotate(45deg) translate(35px , -35px);
+    background: white;
+  }
+</style>
+
+<div class=" relative w-full lg:w-2/12 lg:h-screen lg:flex justif-center overflow-x-hidden z-20 " >
+  <div id="nav-tablet" class=" w-full lg:bg-transparent  lg:mt-20   transform duration-500   fixed top-18 md:left-0   md:top-0    ">
+    <nav class="w-full h-20   mt-   md:hidden relative ">
+      <button id="btn" class=" w-10 h-10 mt-3 z-30  absolute right-10    md:hidden top-0 p-2 flex space-y-2  rounded-md items-center   flex justify-center items-center">
+        
+          <div class=" divbtn w-full flex justify-content items-content">
+            <div class="  bar w-6 h-1 bg-gray-800 transform duration-500  "></div>
+          </div>
+
+        
+      </button>
+      <div id="mobile_nav"  class=" w-full h-full    bg-gray-00 bg-opacity-100 transform duration-500 absolute top-0 left-0  justify-center items-center">
+        
+      <div  class="flex h-full justify-center items-center hidden">
+        <ul  class=' p-4 space-y-4 '>
+          <a href="/" class=""><li class=" w-full  text-lg   text-gray-200 font-semibold text-xl flex justify-center w-full h-10 items-center  " >About </li></a>
+          <a href="/projects" class=""><li class=" w-full text-gray-200 font-semibold text-xl flex justify-center w-full h-10 items-center   " >Portfolio </li></a>
+          <a href="/blog" class=""><li class=" w-full text-gray-200 font-semibold text-xl flex justify-center w-full h-10 items-center   " >Blog </li></a>
+          <a href="/contact" class=""><li class=" w-full text-gray-200 font-semibold text-xl flex justify-center w-full h-10 items-center   " >Contact </li></a>
+    
+        </ul>
+      </div>
+  </div>
+  </nav>
+  
+  <nav  class=" hidden md:flex lg:hidden     md:w-full md:h-20 md:justify-center items-center ">
+      <ul class=" flex justify-around text-xl">
+        <li class=" relative " ><a class=" w-auto p-2 hover:text-gray-800 p-4 text-gray-600 " href="/">About me</a> </li>
+        <li class="   relative" ><a class=" w-auto p-2 hover:text-gray-800 p-4 text-gray-600 " href="/projects">Portfolio</a></li>
+        <li class="  relative" ><a class="  w-auto p-2 hover:text-gray-800  p-4 text-gray-600 " href="/blog">Blog</a></li>
+        <li class=" relative" ><a class="  w-auto p-2 hover:text-gray-800 p-4 text-gray-600 " href="/contact">Contact me</a></li>
+      </ul>
+  </nav>
+  <div class="w-full flex justify-center ">
+    <nav style="  " class="   hidden md:hidden  lg:block lg:w-full  bg-gray-00   md h-96 md:justify-center items-center bg-gray p-4 ">
+    
+      <img class="w-32 rounded-md " src="https://images.pexels.com/photos/7316632/pexels-photo-7316632.jpeg?cs=srgb&dl=pexels-alejandro-peralta-7316632.jpg&fm=jpg" alt="">
+    
+      
+        <ul class="  max-w-40 space-y-4 lg:text-xl md:text-lg my-10">
+          <li class="relative  p-2 hover:text-gray-800 nav_link " ><a class="p- text-gray-800 " href="/">About me</a> </li>
+          <li class="relative  p-2 hover:text-gray-800 nav_link" ><a class=" text-gray-800 " href="/projects"> Portfolio </a></li>
+          <li class="relative  p-2 hover:text-gray-800 nav_link" ><a class=" text-gray-800 " href="/blog">Blog</a></li>
+          <li class="relative  p-2 hover:text-gray-800 nav_link" ><a class=" text-gray-800" href="/contact">Contact me</a></li>
+        </ul>
+    
+  </nav>
+  </div>
+  </div>
+</div>
+<style>
+  .show{
+    display: flex !important ;
+  }
+
+  
+    
+</style>
+<script type="module" >
+  import Swiper from 'https://unpkg.com/swiper@8/swiper-bundle.esm.browser.min.js'
+
+  $(document).ready(function () {
+      $('#btn').click(function (e) { 
+          e.preventDefault();
+          $('#mobile_nav').toggleClass(' h-screen  bg-opacity-80  bg-gray-800 ');
+          $('#btn .bar').toggleClass('bg-gray-100 rotate-45  absolute  ');
+          $('#btn').toggleClass('bg-transparent  shadow-none');
+          $(' #btn').toggleClass('open  ');
+          $('#mobile_nav div ').toggleClass('show');
+
+          
+      });
+
+      $(window).scroll(function(){
+      var scrollw = $(window).scrollTop()
+      if (scrollw >= 15 ) {
+          $("#nav-tablet").addClass('md:bg-gray-100'); 
+          $('#btn').addClass('bg-gray-200 bg-opacity-80 shadow-xl');
+      }
+
+      
+      else{
+          $("#nav-tablet").removeClass('md:bg-gray-100')
+          $('#btn').removeClass('bg-gray-200 bg-opacity-80 shadow-xl');
+      }
+      if(scrollw >= 1000 ){
+  $('.skill-per').each(function(){
+  var $this = $(this);
+  var per = $this.attr('per');
+  $this.css('width',per+'%');
+  //console.log(per)
+  $({animatedValue:0}).animate({animatedValue:per},{
+      duration:5000,
+      step:()=>{
+          $this.attr('per',Math.floor(this.animatedValue));
+      },
+  })
+})
+
+
+  
+
+
+}
+else{
+  
+}
+if(scrollw >= 1000 ){
+  $('.test').css('animation','type')
+}
+  });
+  });
+
+  
+  
+</script>

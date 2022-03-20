@@ -1,0 +1,121 @@
+
+<div class="w-full h-10 px-4">
+    <h1 class=" test text-gray-600 text-xl font-bold ">
+      Testimonials_
+    </h1>
+  </div>
+<section class=" w-full  bg-gray-600  relative bg-opacity-50   " style="max-height: 60%;">
+  
+    <div class="flex justify-center w-full ">
+        <div class=" flex justify-center items-center absolute -top-10 w-20 h-20 rounded-full bg-white z-10  ">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M19.417 6.679C20.447 7.773 21 9 21 10.989c0 3.5-2.457 6.637-6.03 8.188l-.893-1.378c3.335-1.804 3.987-4.145 4.247-5.621-.537.278-1.24.375-1.929.311-1.804-.167-3.226-1.648-3.226-3.489a3.5 3.5 0 0 1 3.5-3.5c1.073 0 2.099.49 2.748 1.179zm-10 0C10.447 7.773 11 9 11 10.989c0 3.5-2.457 6.637-6.03 8.188l-.893-1.378c3.335-1.804 3.987-4.145 4.247-5.621-.537.278-1.24.375-1.929.311C4.591 12.322 3.17 10.841 3.17 9a3.5 3.5 0 0 1 3.5-3.5c1.073 0 2.099.49 2.748 1.179z"/></svg>
+        </div>
+    </div>
+    <div class='w-full ' >
+        <img class="w-full h-full absolute top-0" src="https:picsum.photos/1000" alt="">
+        <div class="w-full h-full absolute top-0 bg-gray-800 bg-opacity-60">
+
+        </div>
+    </div>
+    <div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        {% for tester in testers %}
+        <div class="swiper-slide flex center justify-center py-10 w-full ">
+            <div class="w-2/3 bg-gray-00  ">
+            <div class=" testimonial mt- space-y-2  ">
+                <h1 class="text-xl text-white my-3">{{ tester.client }}</h1>
+                <i class="text-gray-300 text-lg">Project: {{tester.project}}</i>
+                <hr>
+                <p class=" text-xl text-gray-100 mt-10">
+                    {{tester.comment |truncatewords:50  }}
+                </p>
+            </div>
+            </div>
+    
+        </div>
+        {% endfor %}
+       
+        
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination text-gray-300 "></div>
+    
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev text-gray-200 pl-2 w-10"></div>
+      <div class="swiper-button-next text-gray-200 pr-2 w-10"></div>
+    
+      <!-- If we need scrollbar -->
+      
+    </div>
+    
+</section>
+
+<style>
+    .swiper {
+    width: 100%;
+}
+.swiper-pagination-bullet-active {
+  background-color: rgb(250, 244, 244);
+}
+.test{
+  position:relative;
+  display: inline-block;
+}
+.test::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  width:100%;
+  height:100%;
+  background: white ;
+  border-left: 1px solid black;
+  animation:   ;
+  
+}
+@keyframes type {
+  0%{
+    right:0;
+  }
+  100%{
+    right:-100%;
+  }
+}
+@keyframes bllink {
+  0%{
+    border-left: 0px;
+  }
+  100%{
+    border-left: 1px;
+  }
+}
+</style>
+
+<script type="module">
+    import Swiper from 'https://unpkg.com/swiper@8/swiper-bundle.esm.browser.min.js'
+    var swiper = new Swiper(".swiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+
+  // And if we need scrollbar
+  
+      var scrolly = window.scrollTo
+      if(scrolly>1300){
+        document.querySelector('.test').style.animation =' type 3s  steps(10) forwards'
+      }
+    
+  </script>

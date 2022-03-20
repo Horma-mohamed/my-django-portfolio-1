@@ -1,0 +1,83 @@
+
+
+    {% extends 'base.html' %}
+{% block title %} {{post.title}} {%endblock%}
+{% block content %}
+{% load static %}
+    <section class=" md:w-full lg:w-full w-full flex justify-center" >
+        <div class="w-4/5 lg:full">
+            <div class=" w-full min-h-screen relative top-40 flex justify-center px-3 md:px-0  ">
+                
+                <div class=" w-full   min-h-screen flex  justify-center    ">
+                    <div class="w-full ">
+                        <div class=" block  md:flex justify-between w-full items-center">
+                            <h1 class='text-3xl text-gray-800 py-2 ' >{{post.title}}</h1>
+                            <span  >
+                                Author: {{ post.create_by }}
+                            </span>
+                            <br class="md:hidden" > 
+                            <span>
+                               date : {{ post.created_at | date:"d F Y" }}
+                            </span>
+                        </div>
+                                <img class="my-4 w-full" src="{{ post.album.thumb.url }}" alt="img" srcset="">
+                        <p class='text-lg text-gray-600' >
+                            {{ post.conten}}
+                        </p>
+                         
+                    </div>
+                    
+                </div>
+                
+    
+        </div>
+        <div class=" w-full flex justify-center mt-20 ">
+            <div class="  w-full py-2  space-y-5">
+                {% for comment in post.comments.all %}
+                    <div class="w-full flex justify-center min-h-40 ">
+                        <div class="w-1/2 border-gray-00 border- bg-gray-200 rounded-md p-4 ">
+                            <div class=" w-full my-2 flex space-x-3  items-center " >
+                                <img class="w-14 h-14 rounded-full" src={% static 'img/default.svg' %} alt="" srcset="">
+                                <h1 class=" text-xl text-gray-800 " >{{ comment.author }}</h1>
+                                <!--<span>{{comment.created_at | date:"d F Y"}}</span>-->
+                            </div>
+                            <p class=" text-gray-700 text-md" >
+                                {{comment.comment}}
+                            </p>
+                        </div>
+                    </div>
+                    
+    
+                {% endfor %}
+                <div class="  w-full flex justify-center min-h-40 md:h-96   rounded-md overflow-x-hidden items-center my-20 bg-gray200"> 
+                    <form  method="post" class="relative shadow-xl border-2 rounded-md bg-gray-200  bg-opacity-60 p-4 rounded-md  w-full  ">
+                        {% csrf_token %}
+                        <!--
+                            <div class="w-full bg-transparent text-white flex justify-center m-2 " >
+                            <input name="email"  type="email" placeholder="Enter your email here " class=" placeholder-gray-800  h-14 w-full bg-transparent  text-gray-800 outline-none border-2 border-gray-800 border-opacity-60 rounded-md pl-2" />
+                        </div>
+                        -->
+                        
+                        <div class="w-full bg-transparent text-gray-800  flex justify-center m-2  rounded-md " >
+                            <textarea name="comment" class="w-full bg-transparent h-32  text-gray-800 outline-none border-2 placeholder-gray-800 border-gray-800 border-opacity-60 rounded-md pl-2 min-h-60 "  placeholder="Comment here"></textarea>
+                        </div>
+                        <div class=" w-full  ">
+                            <button class="w-20 h-10 hover:bg-gray-800 hover:text-gray-100 text-gray-800  border-gray-50 rounded-md bg-gray-300 float-right" type="submit" >Comment</button>
+                        </div>
+                    {% if user.is_authenticated %}
+                    {% else %}
+                    <div class="absolute  top-0 w-full h-full bg-gray-600 bg-opacity-60 flex justify-center items-center">
+                        <div class=" text-gray-200 text-md">you are not logged in , <a href="#">login</a> or <a href="#">create account</a> </div>
+                    </div>
+                    {% endif %}
+                    </form>
+                    
+                </div>
+                </div>
+                
+        </div>
+        </div>
+        
+    </section>
+    {% endblock %}
+    
