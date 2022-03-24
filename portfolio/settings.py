@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-uh^&nl7o2h-t3(*&$kb=ip7g*!8$v70qd)enn)tu*rfxg+1w-('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['horma-portfolio.herokuapp.com','127.0.0.1']
 
 
 # Application definition
