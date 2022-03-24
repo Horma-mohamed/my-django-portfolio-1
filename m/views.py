@@ -1,5 +1,5 @@
 
-from tkinter import E
+
 from django.conf import settings
 from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import render,redirect, get_object_or_404
