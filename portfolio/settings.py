@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import dj_database_url
 import os
 from pathlib import Path
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     "corsheaders",
     'ckeditor',
+    'whitenoise.runserver_nostatic',
     
 ]
 
@@ -102,6 +103,8 @@ DATABASES = {
     }
 }
 
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -139,7 +142,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT= os.path.join(BASE_DIR,'static')
-STATICFILES_DIRS=[os.path.join(BASE_DIR,'portfolio/static')]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_FROM_EMAIL = 'will@learndjango.com'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
