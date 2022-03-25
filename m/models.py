@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.forms import CharField
 from ckeditor.fields import RichTextField
+from cloudinary.models import CloudinaryField
 
 
 # Create your models here.
@@ -17,7 +18,7 @@ class Skill(models.Model):
 class Client(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField( max_length=254)
-    profile_img= models.ImageField(upload_to='photos/clients',default='photos/clients/user.png')
+    profile_img=CloudinaryField('image')
     def __str__(self):
         return self.name
 class Testimonial(models.Model):
@@ -31,8 +32,8 @@ class Profile(models.Model):
     user= models.OneToOneField(User,related_name='profile', on_delete=models.CASCADE)
     About = RichTextField(blank=True,null=True)
     title = models.CharField(max_length=300)
-    picture= models.ImageField(upload_to='photos/users')
-    cv = models.FileField( upload_to='files/cv/', null=True,blank=True,)
+    picture=(upload_to='photos/users')
+    cv = CloudinaryField('file')
     def __str__(self):
         return f'{self.user}_profile'
 
@@ -45,7 +46,7 @@ class Category(models.Model):
         verbose_name = 'Categorie'
 
 class Album(models.Model):
-    thumb = models.ImageField( upload_to='photos/post',null=True)
+    thumb = CloudinaryField('image')
     #post= models.OneToOneField(Post, related_name="album", on_delete=models.CASCADE)
     def __str__(self):
         return f'Album-{self.pk}'
@@ -67,7 +68,7 @@ class Post(models.Model):
         return f'Post-{self.pk}-{self.title}'
         
 class ImageFile(models.Model):
-    image = models.ImageField( upload_to='photos/images')
+    image =CloudinaryField('image')
     album = models.ForeignKey(Album,related_name='images',on_delete=models.CASCADE)
     def __str__(self):
         return f'{self.album}-image'
@@ -129,7 +130,7 @@ class Employment(models.Model):
 class SocialAccount(models.Model):
     socialPlatform = models.CharField(max_length=50,)
     link= models.URLField()
-    icon = models.FileField(upload_to='icons/SocialAccounts')
+    icon = CloudinaryField('file')
     
     def __str__(self):
         return self.socialPlatform

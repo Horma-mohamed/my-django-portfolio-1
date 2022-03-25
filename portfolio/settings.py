@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import dj_database_url
 import os
 from pathlib import Path
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -164,3 +166,9 @@ EMAIL_HOST_PASSWORD= 'Forever2@'
 # if you,ll use gmail smtp make sure that the let less scure app is On 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+cloudinary.config( 
+  cloud_name = "horma", 
+  api_key = "651485479293157", 
+  api_secret = "8Ikzh5TomsMzoJL9-epqTt7xkCw" 
+)
