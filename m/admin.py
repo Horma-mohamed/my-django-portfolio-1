@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import * 
 # Register your models here.
+from django_markdown.admin import MarkdownModelAdmin
 class InlineImages(admin.StackedInline):
     model = ImageFile
     extra = 1
@@ -27,7 +28,7 @@ admin.site.register(Post,ArticleAdmin)
 admin.site.register(Comment)
 admin.site.register(Dgree)
 admin.site.register(Employment)
-admin.site.register(Case)
+admin.site.register(Case,MarkdownModelAdmin)
 admin.site.register(Stack)
 admin.site.register(SocialAccount)
 

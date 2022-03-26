@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "corsheaders",
     'ckeditor',
     'whitenoise.runserver_nostatic',
+    'django_markdown',
     
 ]
 
@@ -172,3 +173,5 @@ cloudinary.config(
   api_key = "651485479293157", 
   api_secret = "8Ikzh5TomsMzoJL9-epqTt7xkCw" 
 )
+
+MARKDOWN_EDITOR_SKIN = 'simple'
