@@ -32,7 +32,7 @@ class Profile(models.Model):
     user= models.OneToOneField(User,related_name='profile', on_delete=models.CASCADE)
     About = RichTextField(blank=True,null=True)
     title = models.CharField(max_length=300)
-    picture=(upload_to='photos/users')
+    picture=models.ImageField(upload_to='photos/users')
     cv = CloudinaryField('file')
     def __str__(self):
         return f'{self.user}_profile'
