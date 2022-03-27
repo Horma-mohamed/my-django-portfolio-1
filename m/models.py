@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.forms import CharField
 from ckeditor.fields import RichTextField
 from cloudinary.models import CloudinaryField
-from django_markdown.models import MarkdownField
+#from django_markdown.models import MarkdownField
 
 
 # Create your models here.
@@ -56,7 +56,6 @@ class Album(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
-    # conten = RichTextField(blank=True,null=True)
     content = RichTextField(blank=True,null=True)
     slug=models.SlugField(unique=True)
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
@@ -89,7 +88,7 @@ class Stack(models.Model):
 
 class Case(models.Model):
     title = models.CharField(max_length=50)
-    content = MarkdownField(blank=True,null=True)
+    content = models.TextField(max_length=10000,blank=True,null=True)
     category = models.ForeignKey(Category, related_name='cases' , on_delete=models.CASCADE)
     website =  models.CharField( max_length=50)
     used_stack = models.ManyToManyField(Stack,related_name="stacks" )
