@@ -28,7 +28,7 @@ admin.site.register(Post,ArticleAdmin)
 admin.site.register(Comment)
 admin.site.register(Dgree)
 admin.site.register(Employment)
-admin.site.register(Case,MarkdownModelAdmin)
+admin.site.register(Case)
 admin.site.register(Stack)
 admin.site.register(SocialAccount)
 
