@@ -174,4 +174,4 @@ cloudinary.config(
   api_secret = "8Ikzh5TomsMzoJL9-epqTt7xkCw" 
 )
 
-MARKDOWN_EDITOR_SKIN = 'simple'
+#MARKDOWN_EDITOR_SKIN = 'simple'

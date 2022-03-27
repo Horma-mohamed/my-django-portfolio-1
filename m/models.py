@@ -48,7 +48,6 @@ class Category(models.Model):
 
 class Album(models.Model):
     thumb = CloudinaryField('image')
-    #post= models.OneToOneField(Post, related_name="album", on_delete=models.CASCADE)
     def __str__(self):
         return f'Album-{self.pk}'
     def thum(self):
