@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     "corsheaders",
     'ckeditor',
     'whitenoise.runserver_nostatic',
-    'django_markdown',
+    
     
 ]
 
