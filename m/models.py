@@ -87,7 +87,7 @@ class Stack(models.Model):
 
 class Case(models.Model):
     title = models.CharField(max_length=50)
-    content = models.TextField(max_length=10000,blank=True,null=True)
+    content = RichTextField(blank=True,null=True)
     category = models.ForeignKey(Category, related_name='cases' , on_delete=models.CASCADE)
     website =  models.CharField( max_length=50)
     used_stack = models.ManyToManyField(Stack,related_name="stacks" )
