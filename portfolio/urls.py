@@ -18,19 +18,13 @@ from django.urls import path ,include,re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.static import serve
-from django.conf.urls import url
-from django_markdown import flatpages
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('m.urls')),
     path('', include('mail.urls')),
-    url('^markdown/', include( 'django_markdown.urls')),
-    url(r'^media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
+    re_path(r'^media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
     
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
-admin.autodiscover()
-flatpages.register()
-urlpatterns += [ url(r'^admin/', include(admin.site.urls)), ]
 
 
