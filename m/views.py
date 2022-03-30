@@ -73,6 +73,10 @@ class SocialAccount(viewsets.ModelViewSet):
     queryset = SocialAccount.objects.all()
     serializer_class =SocialAccountSerializer
 
+class Profile(viewsets.ModelViewSet):
+    queryset = Profile.objects.get(user=request.user)
+    serializer_class =ProfileSerializer
+    
 def SendMail(req):
     subject=req.GET.get('subject')
     message = req.GET.get('message')
