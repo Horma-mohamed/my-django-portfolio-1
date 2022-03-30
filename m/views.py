@@ -74,7 +74,7 @@ class SocialAccount(viewsets.ModelViewSet):
     serializer_class =SocialAccountSerializer
 
 class Profile(viewsets.ModelViewSet):
-    queryset = Profile.objects.get(user=request.user)
+    queryset = Profile.objects.all()
     serializer_class =ProfileSerializer
     
 def SendMail(req):
