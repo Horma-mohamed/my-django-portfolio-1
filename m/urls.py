@@ -12,6 +12,7 @@ router.register('degrees',Dgrees,basename='degrees')
 router.register('skills',Skills,basename='skills')
 router.register('categories',Category,basename='categories')
 router.register('social-accounts',SocialAccount,basename='social-accounts')
+router.register('profiles',Profile,basename='profiles')
 urlpatterns = [
     path('sendmail',SendMail,name='home'),
     path('postscomments/<int:id>',getcomments,name='comments'),
