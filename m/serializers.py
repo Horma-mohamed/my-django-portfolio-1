@@ -89,3 +89,7 @@ class SocialAccountSerializer(serializers.ModelSerializer):
         model = SocialAccount
         fields = '__all__'
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = '__all__'
