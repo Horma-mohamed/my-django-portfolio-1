@@ -23,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-uh^&nl7o2h-t3(*&$kb=ip7g*!8$v70qd)enn)tu*rfxg+1w-('
+SECRET_KEY = 'SecretKey
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['horma-portfolio.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['another host','127.0.0.1']
 
 
 # Application definition
@@ -97,7 +97,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
 
-        'PASSWORD': 'forever2',
+        'PASSWORD': '<password>',
 
         'HOST': 'localhost',
 
@@ -162,16 +162,16 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER= 'horma411@gmail.com'
-EMAIL_HOST_PASSWORD= 'Forever2@'
+EMAIL_HOST_USER= 'somethin@mail.com'
+EMAIL_HOST_PASSWORD= '<passWord>'
 # if you,ll use gmail smtp make sure that the let less scure app is On 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 cloudinary.config( 
-  cloud_name = "horma", 
-  api_key = "651485479293157", 
-  api_secret = "8Ikzh5TomsMzoJL9-epqTt7xkCw" 
+  cloud_name = "<name>", 
+  api_key = "<api_key>", 
+  api_secret = "<api_secret> 
 )
 
 #MARKDOWN_EDITOR_SKIN = 'simple'
